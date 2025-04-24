@@ -1,4 +1,4 @@
-name: Deploy
+name: Access Azure Key
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  access-azure-key:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +23,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run GraphAnalyzer
+    - name: Access Azure Key
       env:
         AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
       run: |
-        python your_script.py
+        echo "Your Azure Storage Connection String is: $AZURE_STORAGE_CONNECTION_STRING"
