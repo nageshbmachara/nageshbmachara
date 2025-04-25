@@ -23,8 +23,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Access Azure Key
+    - name: Run Python Script
       env:
         AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
       run: |
-        echo "Your Azure Storage Connection String is: $AZURE_STORAGE_CONNECTION_STRING"
+        python print_connection_string.py
